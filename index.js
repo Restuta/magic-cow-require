@@ -21,7 +21,7 @@
 // testDoMagic({color: 'blue', message: 'Test cows everywhere!'})
 
 
-// throws an erro
+// throws an error
 const doIndexMagic = require('./command')
 
 // doIndexMagic({color: 'cyan', message: 'You know what happens to cows when you use index.js files?'})
