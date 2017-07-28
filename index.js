@@ -1,27 +1,27 @@
+/*
+This is a proposal on how to achieve a safety net for modules that are removed from the app.
+If that is the case we want to know at start time that something is not correct.
 
-// // production code
-// const doMagic = require('./command/do-magic').doMagic
-// doMagic({color: 'magenta', message: 'You are one nice cow!'})
-//
-//
-//
-// // test code
-// const createDoMagicCommand = require('./command/do-magic').createDoMagicCommand
-//
-// const testDoMagic = createDoMagicCommand({
-//   chalk: require('chalk'),
-//   cowsay: {
-//     say({text}) {
-//       return `🐮  ${text}`
-//     }
-//   },
-//   log: console.log
-// })
-//
-// testDoMagic({color: 'blue', message: 'Test cows everywhere!'})
+It's easly achiavable with direct require of those modules and avoiding index.js:
+ */
 
 
-// throws an erro
-const doIndexMagic = require('./command')
+// production code
+const doMagic = require('./command/do-magic').doMagic
+doMagic({color: 'magenta', message: 'You are one nice cow!'})
 
-// doIndexMagic({color: 'cyan', message: 'You know what happens to cows when you use index.js files?'})
+
+// test code
+const createDoMagicCommand = require('./command/do-magic').createDoMagicCommand
+
+const testDoMagic = createDoMagicCommand({
+  chalk: require('chalk'),
+  cowsay: {
+    say({text}) {
+      return `🐮  ${text}`
+    }
+  },
+  log: console.log
+})
+
+testDoMagic({color: 'blue', message: 'Test cows everywhere!'})
